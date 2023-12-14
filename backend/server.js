@@ -8,10 +8,10 @@ const app = express();
 
 connectDB();
 
-app.use(express.json());
+app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/guest', require('./routes/guestRoutes'));
+app.use('/api/goals', require('./routes/goalRoutes'));
 
 app.use(errorHandler);
 
