@@ -32,3 +32,7 @@ app.use('/api/guest', require('./routes/guestRoutes'));
 
 app.use(errorHandler);
 
+app.get('/get-ip', (req, res) => {
+  const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  res.send(`Client IP Address: ${clientIp}`);
+});
