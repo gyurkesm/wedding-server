@@ -8,8 +8,20 @@ const app = express();
 
 connectDB();
 
-app.use(express.json({ extended: false }));
+
 app.use(express.urlencoded({ extended: false }));
+
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+  
+  res.header(
+    'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  
+  next();
+})
+app.use(express.json({ extended: false }));
 
 app.use('/api/goals', require('./routes/goalRoutes'));
 app.use('/api/guest', require('./routes/guestRoutes'));
