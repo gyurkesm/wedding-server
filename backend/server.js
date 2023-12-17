@@ -7,7 +7,7 @@ const connectDB = require('./config/db')
 const app = express();
 // const cors = require('cors');
 
-connectDB();
+connectDB(app.listen(port, ()=> console.log(`Server started on port ${port}`)));
 
 
 app.use(express.urlencoded({ extended: false }));
@@ -32,4 +32,3 @@ app.use('/api/guest', require('./routes/guestRoutes'));
 
 app.use(errorHandler);
 
-app.listen(port, ()=> console.log(`Server started on port ${port}`));

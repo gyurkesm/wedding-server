@@ -14,7 +14,6 @@ const getGuests = asyncHandler(async (req, res) => {
 // @route POST /api/guest
 // @access  Private
 const setGuest = asyncHandler(async (req, res) => {
-  console.log(req.body)
 
   const guest = await Guests.create({
     name: req.body.name,
