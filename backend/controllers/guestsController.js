@@ -19,7 +19,7 @@ const setGuest = asyncHandler(async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     vname: req.body.vname,
-    vemail: req.body.vemail,
+    vemail: req.body.vmail,
     message: req.body.message,
     music: req.body.music,
 
