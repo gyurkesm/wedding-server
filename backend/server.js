@@ -14,15 +14,27 @@ connectDB(
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-  //res.setHeader('Access-Control-Allow-Origin', 'https://lottimartin.com');
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  if ((req.header.origin = "https://lottimartin.com")) {
+    res.setHeader("Access-Control-Allow-Origin", "https://lottimartin.com");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
 
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+    next();
+  } else if ((req.header.origin = "https://gyurkesm.github.io/wedding-app")) {
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://gyurkesm.github.io/wedding-app"
+    );
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
 
-  next();
+    next();
+  }
+  //res.setHeader("Access-Control-Allow-Origin", "*");
 });
 
 // app.use(cors());
